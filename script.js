@@ -1067,21 +1067,6 @@ var certData = [
   icon: 'fa-graduation-cap', title: 'An Introduction to the Research Process',
   desc: 'Earned certification in the research process, highlighting proficiency in systematic investigation and data analysis.',
   url: 'https://drive.google.com/file/d/1FddU92RtqHZoQT_tY1nIB_Ms-BkWYGa4/view?usp=sharing'
-},
-{
-  icon: 'fa-trophy', title: 'Aptech ACCP Graduation',
-  desc: 'Advanced Diploma in Software Engineering — comprehensive applied computing programme.',
-  url: 'https://drive.google.com/file/d/1lOtZX9l8Gd1d_H60vcFm4SQUgHyQ5UAx/view?usp=drive_link'
-},
-{
-  icon: 'fa-hands-helping', title: 'MDX Career Fair',
-  desc: 'Certificate of appreciation for volunteering at the Middlesex University Dubai Career Fair.',
-  url: 'https://drive.google.com/file/d/1xMiN9VHdOAJg4D7CowQnaCYCyejLmay8/view?usp=sharing'
-},
-{
-  icon: 'fa-award', title: 'Safety Award — HIA',
-  desc: 'Recognition for exemplary safety practices during the Hamad International Airport Expansion Project.',
-  url: 'https://drive.google.com/file/d/1fJPZr1Ju_TOxwXkYcVMbGi5HcFh4lrN9/view?usp=sharing'
 }
 ];
 
