@@ -2281,7 +2281,7 @@ canvas#heroCanvas {
 @media (max-width: 1024px) {
   .hero-layout { grid-template-columns: 1fr; justify-items: center; gap: 40px; }
   .id-card { width: 280px; }
-  .hero-copy { align-items: center; text-align: center; width: 100%; }
+  .hero-copy { align-items: center; text-align: center; }
   .eyebrow-line { max-width: 30px; }
   .hero-ctas { justify-content: center; }
   .hero-kpis { flex-wrap: wrap; justify-content: center; gap: 8px; }
@@ -2299,27 +2299,8 @@ canvas#heroCanvas {
   .section { padding: 64px 0; }
   .container { padding: 0 16px; }
 
-  .hero-section {
-    padding: calc(var(--nav-h) + 20px) 16px 50px;
-    min-height: 100svh;
-    min-height: 100vh;
-    align-items: flex-start;
-    padding-top: calc(var(--nav-h) + 24px);
-  }
-  .hero-layout {
-    grid-template-columns: 1fr !important;
-    justify-items: center;
-    gap: 28px;
-    width: 100%;
-    padding-bottom: 16px;
-  }
+  .hero-section { padding: calc(var(--nav-h) + 20px) 16px 50px; }
   .id-card { width: 100%; max-width: 300px; }
-  .hero-copy {
-    align-items: center;
-    text-align: center;
-    width: 100%;
-    gap: 18px;
-  }
   .hero-kpis { gap: 4px; }
   .kpi-block { padding: 0 10px; }
   .kpi-num { font-size: 24px; }
