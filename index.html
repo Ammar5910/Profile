@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0, viewport-fit=cover">
+  <meta name="description" content="Ammar Ahmed Muhammad Yousaf — IT Graduate | Signage Sales & Project Coordinator | Tech Enthusiast">
+  <meta name="theme-color" content="#09090e">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="format-detection" content="telephone=no">
+  <title>Ammar Ahmed | Signage Sales & Project Coordinator</title>
+  <link rel="icon" href="logo.png" type="image/png">
+  <!-- Preconnect to external origins -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=Barlow+Condensed:wght@400;500;600;700;800&display=swap" as="style" onload="this.rel='stylesheet'">
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=Barlow+Condensed:wght@400;500;600;700;800&display=swap" rel="stylesheet"></noscript>
+  <script src="https://cdn.tailwindcss.com" defer></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            gold: {
+              DEFAULT: '#C9836A',
+              light:   '#E8A898',
+              dark:    '#A05A45',
+              faint:   'rgba(201,131,106,0.07)',
+              border:  'rgba(201,131,106,0.28)',
+              glow:    'rgba(201,131,106,0.20)',
+            },
+          },
+          fontFamily: {
+            barlow:   ['"Barlow Condensed"', 'sans-serif'],
+            playfair: ['"Playfair Display"', 'serif'],
+          },
+          height: { nav: '84px' },
+        },
+      },
+    };
+  </script>
+  <!-- FontAwesome async — non-blocking -->
+  <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" as="style" onload="this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"></noscript>
+  <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" as="style" onload="this.rel='stylesheet'">
+  <noscript><link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet"></noscript>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="dark-mode">
+
+  <!-- ============================================================ BACKGROUND ============================================================ -->
+  <div class="grain-overlay" aria-hidden="true"></div>
+  <div class="ambient-orb orb-1" aria-hidden="true"></div>
+  <div class="ambient-orb orb-2" aria-hidden="true"></div>
+  <div class="ambient-orb orb-3" aria-hidden="true"></div>
+
+  <!-- Interactive 3D particle canvas for hero -->
+  <canvas id="heroCanvas" aria-hidden="true"></canvas>
+
+  <div class="cursor-dot" id="cursorDot"></div>
+  <div class="cursor-ring" id="cursorRing"></div>
+
+  <!-- ============================================================ FAB ============================================================ -->
+  <div class="fab-container" id="fabContainer">
+    <button class="fab-main" id="fabMain" aria-label="Quick actions">
+      <i class="fas fa-bolt fab-icon-main"></i>
+      <i class="fas fa-times fab-icon-close"></i>
+    </button>
+    <div class="fab-options">
+      <a href="#" target="_blank" rel="noopener noreferrer" class="fab-option" data-label="Download Resume">
+        <i class="fas fa-file-arrow-down"></i>
+      </a>
+      <a href="#contact" class="fab-option fab-option-contact" data-label="Quick Connect">
+        <i class="fas fa-bolt"></i>
+      </a>
+      <a href="#" target="_blank" rel="noopener noreferrer" class="fab-option fab-option-whatsapp" data-label="WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+      </a>
+    </div>
+  </div>
+
+  <!-- ============================================================ NAVIGATION ============================================================ -->
+  <header id="topNav"
+    class="fixed top-0 left-0 right-0 z-[800] h-nav
+           bg-[rgba(10,10,10,0.88)] backdrop-blur-2xl
+           border-b border-[rgba(255,255,255,0.07)]
+           transition-all duration-300 nav-header">
+
+    <div class="max-w-[1380px] mx-auto px-5 xl:px-8 h-full
+                flex flex-row flex-nowrap items-center justify-between gap-x-3">
+
+      <!-- ── ZONE 1: LOGO GROUP (Left) ── -->
+      <div class="nav-logo-wrapper flex-shrink-0 relative" id="navLogoWrapper">
+        <a href="#home"
+           class="nav-anchor nav-logo-link
+                  flex flex-row flex-nowrap items-center gap-x-3
+                  no-underline group"
+           id="navLogoAnchor">
+          <div class="nav-logo-img-wrap flex-shrink-0 flex items-center justify-center">
+            <img src="logo.png" alt="AY"
+                 class="w-full h-full object-contain transition-all duration-300
+                        group-hover:[filter:drop-shadow(0_0_6px_rgba(201,131,106,0.55))]"
+                 loading="eager">
+          </div>
+          <div class="nav-logo-divider w-px h-8 flex-shrink-0 hidden sm:block"></div>
+          <div class="flex-col leading-none gap-y-[3px] hidden sm:flex">
+            <span class="nav-logo-name font-playfair font-bold text-[18px] tracking-wide whitespace-nowrap"></span>
+            <span class="font-barlow font-semibold text-[12px] tracking-[0.11em] uppercase
+                         text-[#C9836A] whitespace-nowrap">Sales & Project Coordinator</span>
+          </div>
+          <span class="nav-logo-chevron hidden" id="navLogoChevron" aria-hidden="true">
+            <i class="fas fa-chevron-down text-[#C9836A] text-[9px] transition-transform duration-250"></i>
+          </span>
+        </a>
+
+        <!-- ── LOGO DROPDOWN (mobile only) ── -->
+        <div class="nav-logo-dropdown" id="navLogoDropdown" aria-hidden="true">
+          <div class="nld-header">
+            <img src="logo.png" alt="AY" class="nld-logo">
+            <div class="nld-info">
+              <span class="nld-name">Ammar Ahmed</span>
+              <span class="nld-role">Sales & Project Coordinator</span>
+            </div>
+          </div>
+          <div class="nld-links">
+            <a href="#about"          class="nld-link nav-anchor"><i class="fas fa-user-tie"></i><span>About</span></a>
+            <a href="#projects"       class="nld-link nav-anchor"><i class="fas fa-diagram-project"></i><span>Projects</span></a>
+            <a href="#experience"     class="nld-link nav-anchor"><i class="fas fa-briefcase"></i><span>Experience</span></a>
+            <a href="#arsenal"        class="nld-link nav-anchor"><i class="fas fa-toolbox"></i><span>Arsenal</span></a>
+            <a href="#education"      class="nld-link nav-anchor"><i class="fas fa-graduation-cap"></i><span>Education</span></a>
+            <a href="#certifications" class="nld-link nav-anchor"><i class="fas fa-certificate"></i><span>Certifications</span></a>
+            <a href="#contact"        class="nld-link nav-anchor"><i class="fas fa-satellite-dish"></i><span>Contact</span></a>
+          </div>
+          <a href="#" target="_blank" rel="noopener noreferrer" class="nld-resume">
+            <i class="fas fa-file-arrow-down"></i> Download Resume
+          </a>
+        </div>
+      </div>
+
+      <!-- ── ZONE 2: NAV LINKS (Center) ── -->
+      <nav aria-label="Main navigation"
+           class="flex flex-row flex-nowrap items-center gap-x-0
+                  overflow-x-auto [scrollbar-width:none] [-ms-overflow-style:none]
+                  [&::-webkit-scrollbar]:hidden flex-1 justify-center px-2">
+        <a href="#about"          class="nav-link nav-anchor font-barlow font-semibold text-[13.5px] tracking-[0.09em] uppercase text-[#6b7585] px-[10px] py-2 whitespace-nowrap rounded-sm">About</a>
+        <a href="#projects"       class="nav-link nav-anchor font-barlow font-semibold text-[13.5px] tracking-[0.09em] uppercase text-[#6b7585] px-[10px] py-2 whitespace-nowrap rounded-sm">Projects</a>
+        <a href="#experience"     class="nav-link nav-anchor font-barlow font-semibold text-[13.5px] tracking-[0.09em] uppercase text-[#6b7585] px-[10px] py-2 whitespace-nowrap rounded-sm">Experience</a>
+        <a href="#arsenal"        class="nav-link nav-anchor font-barlow font-semibold text-[13.5px] tracking-[0.09em] uppercase text-[#6b7585] px-[10px] py-2 whitespace-nowrap rounded-sm">Arsenal</a>
+        <a href="#education"      class="nav-link nav-anchor font-barlow font-semibold text-[13.5px] tracking-[0.09em] uppercase text-[#6b7585] px-[10px] py-2 whitespace-nowrap rounded-sm">Education</a>
+        <a href="#certifications" class="nav-link nav-anchor font-barlow font-semibold text-[13.5px] tracking-[0.09em] uppercase text-[#6b7585] px-[10px] py-2 whitespace-nowrap rounded-sm">Certifications</a>
+        <a href="#contact"        class="nav-link nav-anchor font-barlow font-semibold text-[13.5px] tracking-[0.09em] uppercase text-[#6b7585] px-[10px] py-2 whitespace-nowrap rounded-sm">Contact</a>
+      </nav>
+
+      <!-- ── HAMBURGER (mobile only) ── -->
+      <button
+        id="hamburger"
+        class="hamburger"
+        aria-label="Open navigation menu"
+        aria-expanded="false"
+        aria-controls="mobileDrawer"
+        type="button"
+      >
+        <span class="ham-bar ham-bar--top" aria-hidden="true"></span>
+        <span class="ham-bar ham-bar--mid" aria-hidden="true"></span>
+        <span class="ham-bar ham-bar--bot" aria-hidden="true"></span>
+      </button>
+
+      <a href="#"
+         target="_blank" rel="noopener noreferrer"
+         class="nav-resume-btn flex-shrink-0
+                flex flex-row flex-nowrap items-center gap-x-[6px]
+                px-4 py-[7px] rounded-[6px]
+                bg-[rgba(255,255,255,0.04)] border border-[rgba(255,255,255,0.09)]
+                text-[#f0f2f5] font-barlow font-semibold
+                text-[13px] tracking-[0.11em] uppercase whitespace-nowrap
+                backdrop-blur-md ml-1">
+        <i class="fas fa-file-alt text-[#C9836A] text-[10px]"></i>
+        <span>Resume</span>
+      </a>
+
+    </div>
+  </header>
+
+  <!-- ============================================================ MOBILE DRAWER ============================================================ -->
+  <div id="mobileDrawer" role="dialog" aria-modal="true" aria-label="Navigation menu" aria-hidden="true">
+
+    <div id="mobileDrawerOverlay" aria-hidden="true"></div>
+
+    <div id="mobileDrawerPanel">
+
+      <div class="mob-drawer-header">
+        <img src="logo.png" alt="AY Logo" class="mob-drawer-logo" width="32" height="32">
+        <span class="mob-drawer-name">AMMARAHMED.COM</span>
+        <button class="mob-drawer-close" id="mobileDrawerClose" aria-label="Close navigation">
+          <i class="fas fa-times" aria-hidden="true"></i>
+        </button>
+      </div>
+
+      <div class="mob-drawer-status-pill">
+        <span class="mob-status-dot" aria-hidden="true"></span>
+        <span class="mob-status-label">Open to Opportunities · Sharjah, UAE</span>
+      </div>
+
+      <nav class="mob-drawer-links" aria-label="Site sections">
+        <a href="#home" class="mob-link nav-anchor" data-section="home">
+          <span class="mob-link-icon" aria-hidden="true"><i class="fas fa-house-chimney"></i></span>
+          <span class="mob-link-text">Home</span>
+          <span class="mob-link-arrow" aria-hidden="true"><i class="fas fa-chevron-right"></i></span>
+        </a>
+        <a href="#about" class="mob-link nav-anchor" data-section="about">
+          <span class="mob-link-icon" aria-hidden="true"><i class="fas fa-user-tie"></i></span>
+          <span class="mob-link-text">About</span>
+          <span class="mob-link-arrow" aria-hidden="true"><i class="fas fa-chevron-right"></i></span>
+        </a>
+        <a href="#projects" class="mob-link nav-anchor" data-section="projects">
+          <span class="mob-link-icon" aria-hidden="true"><i class="fas fa-diagram-project"></i></span>
+          <span class="mob-link-text">Projects</span>
+          <span class="mob-link-arrow" aria-hidden="true"><i class="fas fa-chevron-right"></i></span>
+        </a>
+        <a href="#experience" class="mob-link nav-anchor" data-section="experience">
+          <span class="mob-link-icon" aria-hidden="true"><i class="fas fa-briefcase"></i></span>
+          <span class="mob-link-text">Experience</span>
+          <span class="mob-link-arrow" aria-hidden="true"><i class="fas fa-chevron-right"></i></span>
+        </a>
+        <a href="#arsenal" class="mob-link nav-anchor" data-section="arsenal">
+          <span class="mob-link-icon" aria-hidden="true"><i class="fas fa-toolbox"></i></span>
+          <span class="mob-link-text">Arsenal</span>
+          <span class="mob-link-arrow" aria-hidden="true"><i class="fas fa-chevron-right"></i></span>
+        </a>
+        <a href="#education" class="mob-link nav-anchor" data-section="education">
+          <span class="mob-link-icon" aria-hidden="true"><i class="fas fa-graduation-cap"></i></span>
+          <span class="mob-link-text">Education</span>
+          <span class="mob-link-arrow" aria-hidden="true"><i class="fas fa-chevron-right"></i></span>
+        </a>
+        <a href="#certifications" class="mob-link nav-anchor" data-section="certifications">
+          <span class="mob-link-icon" aria-hidden="true"><i class="fas fa-certificate"></i></span>
+          <span class="mob-link-text">Certifications</span>
+          <span class="mob-link-arrow" aria-hidden="true"><i class="fas fa-chevron-right"></i></span>
+        </a>
+        <a href="#contact" class="mob-link nav-anchor" data-section="contact">
+          <span class="mob-link-icon" aria-hidden="true"><i class="fas fa-satellite-dish"></i></span>
+          <span class="mob-link-text">Contact</span>
+          <span class="mob-link-arrow" aria-hidden="true"><i class="fas fa-chevron-right"></i></span>
+        </a>
+      </nav>
+
+      <div class="mob-drawer-footer">
+        <a
+          href="#"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="mob-drawer-resume"
+        >
+          <i class="fas fa-file-arrow-down" aria-hidden="true"></i>
+          Download Resume
+        </a>
+
+        <div class="mob-drawer-badges">
+          <span class="mob-badge"><i class="fas fa-graduation-cap"></i> BSc IT</span>
+          <span class="mob-badge"><i class="fas fa-sign-hanging"></i> Signage Sales</span>
+          <span class="mob-badge"><i class="fas fa-location-dot"></i> Sharjah, UAE</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Scroll progress bar -->
+  <div class="scroll-progress" id="scrollProgress"></div>
+
+  <main>
+
+    <!-- ============================================================ HERO ============================================================ -->
+    <section id="home" class="hero-section">
+      <div class="hero-grid-bg" aria-hidden="true"></div>
+      <div class="hero-scan-line" aria-hidden="true"></div>
+
+      <div class="hero-morph-bg" aria-hidden="true">
+        <div class="morph-shape morph-1"></div>
+        <div class="morph-shape morph-2"></div>
+        <div class="morph-shape morph-3"></div>
+      </div>
+
+      <div class="hero-nodes" aria-hidden="true">
+        <div class="hnode hnode-1"><i class="fas fa-server"></i></div>
+        <div class="hnode hnode-2"><i class="fas fa-network-wired"></i></div>
+        <div class="hnode hnode-3"><i class="fas fa-shield-halved"></i></div>
+        <div class="hnode hnode-4"><i class="fas fa-cloud"></i></div>
+        <div class="hnode hnode-5"><i class="fas fa-database"></i></div>
+        <div class="hnode hnode-6"><i class="fas fa-wifi"></i></div>
+      </div>
+
+      <div class="hero-glitch-lines" aria-hidden="true">
+        <div class="glitch-line gl-1"></div>
+        <div class="glitch-line gl-2"></div>
+        <div class="glitch-line gl-3"></div>
+      </div>
+
+      <div class="hero-layout">
+        <!-- ID Card -->
+        <div class="id-card" data-aos="fade-right" data-aos-duration="900">
+          <div class="id-card-header">
+            <div class="id-chip-row">
+              <div class="id-chip"></div>
+              <span class="id-corp-tag">IT &middot; Signage Sales</span>
+            </div>
+          </div>
+          <div class="id-photo-wrap">
+            <img src="photo.jpg" alt="Ammar Ahmed Muhammad Yousaf" class="id-photo" loading="eager">
+            <div class="id-photo-frame"></div>
+            <div class="id-status-ring"><span class="id-status-dot"></span></div>
+          </div>
+          <div class="id-body">
+            <div class="id-name-block">
+              <h2 class="id-name">Ammar Ahmed</h2>
+              <p class="id-role">Sales & Project Coordinator</p>
+            </div>
+            <div class="id-meta">
+              <div class="id-meta-row"><i class="fas fa-location-dot"></i><span>Sharjah, UAE</span></div>
+              <div class="id-meta-row"><i class="fas fa-graduation-cap"></i><span>BSc Information Technology</span></div>
+              <div class="id-meta-row"><i class="fas fa-circle-check"></i><span>Open to Opportunities</span></div>
+            </div>
+            <div class="id-sectors">
+              <span class="id-sector">Signage Sales</span>
+              <span class="id-sector">Project Coordination</span>
+              <span class="id-sector">Web Dev</span>
+              <span class="id-sector">AI / ML</span>
+            </div>
+          </div>
+          <div class="id-footer">
+            <div class="id-barcode"></div>
+            <span class="id-code">AA-COORD-2024</span>
+          </div>
+        </div>
+
+        <!-- Hero copy -->
+        <div class="hero-copy" data-aos="fade-left" data-aos-duration="900" data-aos-delay="120">
+          <div class="hero-eyebrow">
+            <span class="eyebrow-line"></span>
+            <span class="eyebrow-text">Sales & Project Coordinator &middot; BSc Information Technology</span>
+            <span class="eyebrow-line"></span>
+          </div>
+          <h1 class="hero-headline">
+            <span class="headline-top">Signage. Sales.</span>
+            <span class="headline-mid"><em>Tech-Driven</em></span>
+            <span class="headline-bot">Coordination.</span>
+          </h1>
+          <p class="hero-brief">
+            IT graduate with hands-on experience managing end-to-end signage projects —
+            from client consultation to final installation.
+            Passionate about <strong>web development, AI, and bridging technology with real-world business solutions</strong>.
+          </p>
+          <div class="hero-kpis">
+            <div class="kpi-block">
+              <div class="kpi-inner"><span class="kpi-num" data-count="2">0</span><span class="kpi-unit">+</span></div>
+              <span class="kpi-label">Years Experience</span>
+            </div>
+            <div class="kpi-sep"></div>
+            <div class="kpi-block">
+              <div class="kpi-inner"><span class="kpi-num" data-count="50">0</span><span class="kpi-unit">+</span></div>
+              <span class="kpi-label">Projects Delivered</span>
+            </div>
+            <div class="kpi-sep"></div>
+            <div class="kpi-block">
+              <div class="kpi-inner"><span class="kpi-num" data-count="5">0</span><span class="kpi-unit">+</span></div>
+              <span class="kpi-label">Industry Verticals</span>
+            </div>
+            <div class="kpi-sep"></div>
+            <div class="kpi-block">
+              <div class="kpi-inner"><span class="kpi-num" data-count="100">0</span><span class="kpi-unit">%</span></div>
+              <span class="kpi-label">End-to-End Managed</span>
+            </div>
+          </div>
+          <div class="hero-ctas">
+            <a href="#projects" class="btn btn-gold btn-magnetic nav-anchor">View Projects <i class="fas fa-arrow-right"></i></a>
+            <a href="#contact"  class="btn btn-ghost btn-magnetic nav-anchor"><i class="fas fa-bolt"></i> Get in Touch</a>
+          </div>
+          <div class="hero-ticker" aria-hidden="true">
+            <div class="ticker-track">
+              <span>Middlesex University Dubai</span><span class="ticker-sep">&middot;</span>
+              <span>BSc Information Technology</span><span class="ticker-sep">&middot;</span>
+              <span>Signage Project Coordination</span><span class="ticker-sep">&middot;</span>
+              <span>Web Development</span><span class="ticker-sep">&middot;</span>
+              <span>AI &amp; Machine Learning</span><span class="ticker-sep">&middot;</span>
+              <span>Middlesex University Dubai</span><span class="ticker-sep">&middot;</span>
+              <span>BSc Information Technology</span><span class="ticker-sep">&middot;</span>
+              <span>Signage Project Coordination</span><span class="ticker-sep">&middot;</span>
+              <span>Web Development</span><span class="ticker-sep">&middot;</span>
+              <span>AI &amp; Machine Learning</span><span class="ticker-sep">&middot;</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Scroll indicator -->
+      <div class="hero-scroll-indicator" aria-hidden="true">
+        <div class="scroll-mouse">
+          <div class="scroll-wheel"></div>
+        </div>
+        <span class="scroll-text">Scroll</span>
+      </div>
+    </section>
+
+    <!-- ============================================================ ABOUT ============================================================ -->
+    <section id="about" class="section about-section">
+      <div class="container">
+        <div class="section-header" data-aos="fade-up">
+          <span class="sec-num">01</span>
+          <h2 class="sec-title">Profile</h2>
+          <div class="sec-rule"></div>
+        </div>
+        <div class="about-layout">
+          <div class="about-text" data-aos="fade-right">
+            <p class="bio-lead">I'm <strong>Ammar Ahmed Muhammad Yousaf</strong> — an IT graduate and Sales Executive with a passion for <strong>signage project coordination, web development, and AI</strong>.</p>
+            <p class="bio-body">My academic foundation from Middlesex University Dubai equipped me with strong IT knowledge, while my role at Graphics Sign LLC gave me hands-on experience managing complete signage projects — from client consultation and quotation to production and installation.</p>
+            <p class="bio-body">I specialize in <strong>end-to-end project coordination</strong>, client management, and signage solutions, while actively building expertise in web development, AI-based applications, and design tools to bridge technology with real-world business.</p>
+            <div class="about-stats-row">
+              <div class="about-stat"><span class="astat-num">50+</span><span class="astat-label">Projects Delivered</span></div>
+              <div class="about-stat"><span class="astat-num">5+</span><span class="astat-label">Industry Verticals</span></div>
+              <div class="about-stat"><span class="astat-num">2+</span><span class="astat-label">Years Experience</span></div>
+              <div class="about-stat"><span class="astat-num">3</span><span class="astat-label">Languages Spoken</span></div>
+            </div>
+          </div>
+          <div class="about-panel" data-aos="fade-left" data-aos-delay="150">
+            <div class="panel-sla-ring">
+              <div class="ring-wrapper">
+                <svg viewBox="0 0 120 120" role="img" aria-label="SLA Compliance">
+                  <defs>
+                    <linearGradient id="gGold" x1="0%" y1="0%" x2="100%" y2="100%">
+                      <stop offset="0%" style="stop-color:#7ec8e3"/>
+                      <stop offset="100%" style="stop-color:#a89de8"/>
+                    </linearGradient>
+                  </defs>
+                  <circle class="ring-bg" cx="60" cy="60" r="50"/>
+                  <circle class="ring-fg" cx="60" cy="60" r="50" data-percent="100" style="stroke-dasharray:314.16;stroke-dashoffset:314.16;"/>
+                </svg>
+                <div class="ring-inner">
+                  <span class="ring-val">—</span>
+                  <span class="ring-lbl">SLA Rate</span>
+                </div>
+              </div>
+            </div>
+            <div class="panel-achievements">
+              <div class="ach-item">
+                <div class="ach-icon"><i class="fas fa-graduation-cap"></i></div>
+                <div class="ach-text"><strong>BSc Information Technology</strong><span>Middlesex University Dubai — 2025</span></div>
+              </div>
+              <div class="ach-item">
+                <div class="ach-icon"><i class="fas fa-sign-hanging"></i></div>
+                <div class="ach-text"><strong>Signage Sales Executive</strong><span>Graphics Sign LLC · Sharjah, UAE</span></div>
+              </div>
+              <div class="ach-item">
+                <div class="ach-icon"><i class="fas fa-globe"></i></div>
+                <div class="ach-text"><strong>Open to Opportunities</strong><span>Targeting Project Coordinator or Technical Consultant roles</span></div>
+              </div>
+            </div>
+            <div class="panel-chips">
+              <span class="p-chip"><i class="fas fa-location-dot"></i>Sharjah, UAE</span>
+              <span class="p-chip"><i class="fas fa-graduation-cap"></i>BSc IT</span>
+              <span class="p-chip"><i class="fas fa-globe"></i>Open to Relocation</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================ PROJECTS ============================================================ -->
+    <section id="projects" class="section projects-section">
+      <div class="container">
+        <div class="section-header" data-aos="fade-up">
+          <span class="sec-num">02</span>
+          <h2 class="sec-title">Mission-Critical Projects</h2>
+          <div class="sec-rule"></div>
+        </div>
+        <p class="section-intro" data-aos="fade-up" data-aos-delay="80">Industry signage engagements and academic tech projects where quality and precision were non-negotiable.</p>
+        <!-- Projects will be added by Ammar — placeholder grid -->
+        <div class="projects-grid" id="projectsGrid">
+          <!-- Coming Soon placeholder -->
+          <div class="project-card" style="grid-column:1/-1;text-align:center;padding:3rem 2rem;border:1px dashed rgba(201,131,106,0.25);border-radius:12px;">
+            <div style="font-size:2.5rem;margin-bottom:1rem;opacity:0.4;"><i class="fas fa-diagram-project"></i></div>
+            <p style="color:rgba(201,131,106,0.6);font-family:'Barlow Condensed',sans-serif;font-size:1rem;letter-spacing:0.1em;text-transform:uppercase;">Projects Coming Soon</p>
+            <p style="color:rgba(255,255,255,0.3);font-size:0.85rem;margin-top:0.5rem;">Ammar will add his project data here.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================ EXPERIENCE ============================================================ -->
+    <section id="experience" class="section exp-section">
+      <div class="container">
+        <div class="section-header" data-aos="fade-up">
+          <span class="sec-num">03</span>
+          <h2 class="sec-title">Professional Experience</h2>
+          <div class="sec-rule"></div>
+        </div>
+        <div class="exp-timeline" id="expTimeline">
+          <!-- Experience will be added by Ammar — placeholder -->
+          <div style="text-align:center;padding:3rem 2rem;border:1px dashed rgba(201,131,106,0.25);border-radius:12px;">
+            <div style="font-size:2.5rem;margin-bottom:1rem;opacity:0.4;"><i class="fas fa-briefcase"></i></div>
+            <p style="color:rgba(201,131,106,0.6);font-family:'Barlow Condensed',sans-serif;font-size:1rem;letter-spacing:0.1em;text-transform:uppercase;">Experience Coming Soon</p>
+            <p style="color:rgba(255,255,255,0.3);font-size:0.85rem;margin-top:0.5rem;">Ammar will add his experience data here.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================ ARSENAL ============================================================ -->
+    <section id="arsenal" class="section arsenal-section">
+      <div class="container">
+        <div class="section-header" data-aos="fade-up">
+          <span class="sec-num">04</span>
+          <h2 class="sec-title">Technical Arsenal</h2>
+          <div class="sec-rule"></div>
+        </div>
+        <p class="section-intro" data-aos="fade-up" data-aos-delay="80">The tools, platforms, and skills I deploy across signage projects, web development, and AI applications.</p>
+        <div class="arsenal-bento" id="arsenalBento" data-aos="fade-up" data-aos-delay="120"></div>
+        <div class="sub-block" data-aos="fade-up" data-aos-delay="180">
+          <p class="sub-label">Languages Spoken</p>
+          <div class="lang-grid" id="langGrid"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================ EDUCATION ============================================================ -->
+    <section id="education" class="section edu-section">
+      <div class="container">
+        <div class="section-header" data-aos="fade-up">
+          <span class="sec-num">05</span>
+          <h2 class="sec-title">Education</h2>
+          <div class="sec-rule"></div>
+        </div>
+        <div class="folder-ui" data-aos="fade-up">
+          <div class="folder-tabs">
+            <button class="ftab active" data-pane="ep0">Middlesex University</button>
+            <button class="ftab" data-pane="ep1">GEMS Westminster</button>
+            <button class="ftab" data-pane="ep2">Al Ansar Int'l</button>
+          </div>
+          <div class="folder-body">
+            <!-- Middlesex University -->
+            <div class="folder-pane active" id="ep0">
+              <div class="fp-icon"><i class="fas fa-university"></i></div>
+              <div class="fp-content">
+                <span class="fp-date">Sep 2024 &ndash; Jun 2025</span>
+                <h3 class="fp-degree">Bachelor of Science in Information Technology</h3>
+                <p class="fp-inst">Middlesex University Dubai</p>
+                <div class="fp-grade-badge">
+                  <i class="fas fa-medal"></i>
+                  <span>Graduated 2025 &middot; Cambridge Validated Programme</span>
+                </div>
+                <p class="fp-note">Add your grade / certificate details here.</p>
+                <div class="fp-cert-actions">
+                  <a href="#" target="_blank" rel="noopener noreferrer" class="fp-cert-btn">
+                    <i class="fas fa-certificate"></i>
+                    <span>View Certificate</span>
+                    <i class="fas fa-arrow-up-right-from-square fp-cert-ext"></i>
+                  </a>
+                </div>
+              </div>
+            </div>
+            <!-- GEMS Westminster -->
+            <div class="folder-pane" id="ep1">
+              <div class="fp-icon"><i class="fas fa-school"></i></div>
+              <div class="fp-content">
+                <span class="fp-date">Grade 6 &ndash; Grade 10</span>
+                <h3 class="fp-degree">Secondary Education &mdash; IGCSE</h3>
+                <p class="fp-inst">GEMS Westminster School Sharjah</p>
+                <div class="fp-grade-badge">
+                  <i class="fas fa-certificate"></i>
+                  <span>IGCSE Certificate &middot; Cambridge International</span>
+                </div>
+                <p class="fp-note">Completed the internationally recognised IGCSE programme, covering a broad range of academic disciplines under the Cambridge curriculum.</p>
+                <div class="fp-cert-actions">
+                  <a href="#" target="_blank" rel="noopener noreferrer" class="fp-cert-btn">
+                    <i class="fas fa-certificate"></i>
+                    <span>View Certificate</span>
+                    <i class="fas fa-arrow-up-right-from-square fp-cert-ext"></i>
+                  </a>
+                </div>
+              </div>
+            </div>
+            <!-- Al Ansar International School -->
+            <div class="folder-pane" id="ep2">
+              <div class="fp-icon"><i class="fas fa-school-flag"></i></div>
+              <div class="fp-content">
+                <span class="fp-date">KG 1 &ndash; Grade 6</span>
+                <h3 class="fp-degree">Primary Education</h3>
+                <p class="fp-inst">Al Ansar International School</p>
+                <div class="fp-grade-badge">
+                  <i class="fas fa-star"></i>
+                  <span>Foundation &amp; Primary Years &middot; KG1 to Grade 6</span>
+                </div>
+                <p class="fp-note">Built a strong academic foundation from early childhood through primary years at Al Ansar International School.</p>
+                <div class="fp-cert-actions">
+                  <a href="#" target="_blank" rel="noopener noreferrer" class="fp-cert-btn">
+                    <i class="fas fa-certificate"></i>
+                    <span>View Certificate</span>
+                    <i class="fas fa-arrow-up-right-from-square fp-cert-ext"></i>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================ CERTIFICATIONS ============================================================ -->
+    <section id="certifications" class="section certs-section">
+      <div class="container">
+        <div class="section-header" data-aos="fade-up">
+          <span class="sec-num">06</span>
+          <h2 class="sec-title">Certifications</h2>
+          <div class="sec-rule"></div>
+        </div>
+        <!-- Featured cert placeholder -->
+        <div class="cert-featured" data-aos="zoom-in">
+          <div class="cert-featured-inner" style="text-align:center;padding:2.5rem 2rem;">
+            <div style="font-size:2.5rem;margin-bottom:1rem;opacity:0.4;"><i class="fas fa-certificate"></i></div>
+            <p style="color:rgba(201,131,106,0.6);font-family:'Barlow Condensed',sans-serif;font-size:1rem;letter-spacing:0.1em;text-transform:uppercase;">Featured Certification Coming Soon</p>
+            <p style="color:rgba(255,255,255,0.3);font-size:0.85rem;margin-top:0.5rem;">Ammar will add his featured certification here.</p>
+          </div>
+        </div>
+        <div class="certs-grid" id="certsGrid" data-aos="fade-up" data-aos-delay="150"></div>
+      </div>
+    </section>
+
+    <!-- ============================================================ CONTACT ============================================================ -->
+    <section id="contact" class="section contact-section">
+      <div class="container">
+        <div class="section-header" data-aos="fade-up">
+          <span class="sec-num">07</span>
+          <h2 class="sec-title">Engage</h2>
+          <div class="sec-rule"></div>
+        </div>
+        <div class="contact-layout">
+          <div class="contact-left" data-aos="fade-right">
+            <p class="contact-intro">Ready to discuss a signage project, a web development opportunity, or a new role in project coordination or tech? Get in touch directly.</p>
+            <div class="contact-items">
+              <a href="mailto:ammar@example.com" class="contact-item">
+                <div class="ci-icon"><i class="fas fa-envelope"></i></div>
+                <div class="ci-body"><span class="ci-label">Primary</span><span class="ci-value">ammar5910s@gmail.com</span></div>
+                <i class="fas fa-arrow-up-right-from-square ci-ext"></i>
+              </a>
+              <a href="tel:+97400000000" class="contact-item">
+                <div class="ci-icon"><i class="fas fa-phone"></i></div>
+                <div class="ci-body"><span class="ci-label">Direct Line</span><span class="ci-value">+971507132280</span></div>
+                <i class="fas fa-arrow-up-right-from-square ci-ext"></i>
+              </a>
+              <a href="https://wa.me/97400000000" target="_blank" rel="noopener noreferrer" class="contact-item contact-item-whatsapp">
+                <div class="ci-icon ci-icon-whatsapp"><i class="fab fa-whatsapp"></i></div>
+                <div class="ci-body"><span class="ci-label">WhatsApp</span><span class="ci-value">Message me directly</span></div>
+                <i class="fas fa-arrow-up-right-from-square ci-ext"></i>
+              </a>
+              <div class="contact-item contact-item-static">
+                <div class="ci-icon"><i class="fas fa-location-dot"></i></div>
+                <div class="ci-body"><span class="ci-label">Location</span><span class="ci-value">Sharjah, UAE &middot; Open to Relocation</span></div>
+              </div>
+            </div>
+          </div>
+          <div class="contact-right" data-aos="fade-left" data-aos-delay="120">
+            <div class="social-panel">
+              <p class="social-heading">Professional Networks</p>
+              <a href="https://www.linkedin.com/in/" target="_blank" rel="noopener noreferrer" class="social-btn">
+                <i class="fab fa-linkedin-in"></i>
+                <div><span class="sb-title">LinkedIn Profile</span><span class="sb-sub">Connect professionally</span></div>
+                <i class="fas fa-arrow-up-right-from-square sb-ext"></i>
+              </a>
+              <a href="https://wa.me/97400000000" target="_blank" rel="noopener noreferrer" class="social-btn social-btn-whatsapp">
+                <i class="fab fa-whatsapp"></i>
+                <div><span class="sb-title">WhatsApp</span><span class="sb-sub">Chat instantly</span></div>
+                <i class="fas fa-arrow-up-right-from-square sb-ext"></i>
+              </a>
+              <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" class="social-btn">
+                <i class="fab fa-instagram"></i>
+                <div><span class="sb-title">Instagram</span><span class="sb-sub">@yourusername</span></div>
+                <i class="fas fa-arrow-up-right-from-square sb-ext"></i>
+              </a>
+              <div class="availability-banner">
+                <span class="avail-pulse"></span>
+                <span>Currently open to Project Coordinator &amp; Tech opportunities in UAE and globally.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ============================================================ FOOTER ============================================================ -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <span class="footer-name">Ammar Ahmed</span>
+        <span class="footer-role">Sales & Project Coordinator</span>
+      </div>
+      <div class="footer-links">
+        <a href="#about" class="nav-anchor">Profile</a>
+        <a href="#projects" class="nav-anchor">Projects</a>
+        <a href="#arsenal" class="nav-anchor">Arsenal</a>
+        <a href="#contact" class="nav-anchor">Contact</a>
+      </div>
+      <div class="footer-copy">
+        <span>&copy; 2025 Ammar Ahmed Muhammad Yousaf. All Rights Reserved.</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ============================================================ SCRIPTS ============================================================ -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+  <script src="script.js"></script>
+
+</body>
+</html>
